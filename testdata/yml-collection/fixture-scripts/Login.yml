@@ -1,0 +1,36 @@
+info:
+  name: Login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/auth"
+  body:
+    type: json
+    data: '{ "username": "admin", "password": "password123" }'
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.getBody();
+        bru.setVar("authToken", body.token);
+    - type: tests
+      code: |-
+        test("status is 200", function() {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        test("token is returned", function() {
+          const body = res.getBody();
+          expect(body).to.have.property("token");
+          expect(body.token).to.be.a("string");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

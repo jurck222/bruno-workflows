@@ -1,0 +1,6 @@
+info:
+  name: Dup
+  type: http
+http:
+  method: GET
+  url: "{{BASE_URL}}/dup"

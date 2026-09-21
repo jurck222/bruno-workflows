@@ -1,0 +1,10 @@
+name: qa
+variables:
+  - secret: true
+    name: updater.units.api-key
+  - name: updater.units-api-url
+    value: https://localhost:{{localPortNumber}}/service/units-api
+  - name: updater.units-api-host
+    value: units-api-qa.example.com
+  - name: localPortNumber
+    value: "11101"

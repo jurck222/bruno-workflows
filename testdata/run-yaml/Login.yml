@@ -1,0 +1,10 @@
+info:
+  name: Login
+  type: http
+  seq: 1
+http:
+  method: POST
+  url: "{{BASE_URL}}/login"
+  body:
+    type: json
+    data: '{"user":"x"}'

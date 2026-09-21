@@ -1,0 +1,26 @@
+meta {
+  name: Get signed url
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{APP_BASE_URL}}/case/{{CASE_ID}}/fileUrl
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{AUTH_TOKEN}}
+}
+
+body:json {
+  {
+    "filePath": "cases/{{CASE_ID}}/case-files/example.png"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

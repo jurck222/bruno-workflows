@@ -1,0 +1,8 @@
+info:
+  name: Item
+  type: http
+  seq: 1
+http:
+  method: GET
+  url: "{{BASE_URL}}/widgets/{{widget_kind}}"
+  auth: inherit

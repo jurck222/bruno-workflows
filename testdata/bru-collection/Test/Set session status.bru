@@ -1,0 +1,43 @@
+meta {
+  name: Set session status
+  type: http
+  seq: 1
+}
+
+patch {
+  url: {{APP_BASE_URL}}/test/session-status
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "sessionId": "{{ARBITRATION_ID}}",
+    "status": "session_scheduling"
+  }
+}
+
+docs {
+  Manually set a neutral session status (for testing purposes).
+  
+  No permission checks - works for any session (mediation or arbitration).
+  
+  Body:
+  - sessionId: UUID of the session
+  - status: One of the valid status values
+  
+  Valid status values:
+  - init_hours
+  - criteria_submissions
+  - neutral_ordering
+  - neutral_selection
+  - waiting_neutral_response
+  - neutral_conflict_check
+  - disclosure_check
+  - engagement_letter_signing
+  - waiting_session_payments
+  - session_scheduling
+  - waiting_schedule_response
+  - waiting_extension_payment
+  - session
+}

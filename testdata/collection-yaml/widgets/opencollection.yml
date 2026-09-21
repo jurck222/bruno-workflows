@@ -1,0 +1,10 @@
+info:
+  name: widgets
+  type: folder
+request:
+  variables:
+    - name: widget_kind
+      value: gadget
+  auth:
+    type: bearer
+    token: folder-token-123

@@ -1,0 +1,17 @@
+meta {
+  name: Stale body select
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{BASE_URL}}/x
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "leftover": "from switching body type in the GUI"
+  }
+}

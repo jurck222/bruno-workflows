@@ -1,0 +1,35 @@
+meta {
+  name: Upload case file
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{APP_BASE_URL}}/case/{{CASE_ID}}/files/upload
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{AUTH_TOKEN}}
+}
+
+body:multipart-form {
+  file: @file(/path/to/your/file.pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+docs {
+  Upload a file for a case (used during onboarding to upload contracts/exhibits).
+
+  The file is sent as multipart/form-data and validated server-side
+  (max 10MB, allowed types: TXT, PDF, JPEG, PNG, DOC, DOCX).
+
+  Returns `{ key, filename }` — use the `key` as `fileUrl` when submitting the onboarding form.
+
+  Access: claimant/respondent parties only (crudRoles).
+}

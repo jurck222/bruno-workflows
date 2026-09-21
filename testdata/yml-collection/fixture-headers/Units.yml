@@ -1,0 +1,24 @@
+info:
+  name: Units
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{updater.units-api-url}}/0.2/units.json"
+  headers:
+    - name: API-KEY
+      value: "{{updater.units.api-key}}"
+    - name: Host
+      value: "{{updater.units-api-host}}"
+  params:
+    - name: duration
+      value: -PT6H
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

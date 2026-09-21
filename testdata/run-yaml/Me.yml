@@ -1,0 +1,10 @@
+info:
+  name: Me
+  type: http
+  seq: 2
+http:
+  method: GET
+  url: "{{BASE_URL}}/me"
+  auth:
+    type: bearer
+    token: "{{AUTH_TOKEN}}"

@@ -1,0 +1,36 @@
+meta {
+  name: Login
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{SUPABASE_URL}}/auth/v1/token?grant_type=password
+  body: json
+  auth: inherit
+}
+
+params:query {
+  grant_type: password
+}
+
+headers {
+  apiKey: {{API_KEY}}
+}
+
+body:json {
+  /*{
+      "email": "user2@example.com",
+      "password": "Pass1234"
+  }*/
+
+  {
+    "email": "user@example.com",
+    "password": "Test123"
+  }
+
+}
+
+script:post-response {
+  bru.setEnvVar("AUTH_TOKEN", res.body.access_token);
+}
